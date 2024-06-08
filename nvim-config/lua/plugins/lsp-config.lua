@@ -30,10 +30,10 @@ return {
                 })
             end
 
-            vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, {})
+            vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[L]sp [H]over" })
+            vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "[L]sp [D]efinition" })
+            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "[L]sp [R]eferences" })
+            vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, { desc = "[L]sp [C]ode [A]ction" })
         end,
     },
     {
