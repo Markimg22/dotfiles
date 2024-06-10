@@ -1,5 +1,5 @@
-local servers = { "lua_ls", "tsserver", "html", "prismals" }
-local formatters = { "stylua", "prettier" }
+local servers = { "lua_ls", "tsserver", "html", "prismals", "tailwindcss" }
+local formatters = { "stylua", "prettier", "eslint_d" }
 
 return {
     {
@@ -7,7 +7,7 @@ return {
         lazy = false,
         config = function()
             require("mason").setup()
-        end
+        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -26,7 +26,7 @@ return {
 
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
-                    capabilities = capabilities
+                    capabilities = capabilities,
                 })
             end
 
@@ -41,8 +41,8 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("mason-null-ls").setup({
-                ensure_installed = formatters
+                ensure_installed = formatters,
             })
-        end
-    }
+        end,
+    },
 }

@@ -13,3 +13,5 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboar
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
+
+vim.keymap.set("n", "<leader>/", "<cmd>noh<CR>", { desc = "Clean search highlighting" })
