@@ -1,4 +1,4 @@
-local servers = { "lua_ls", "tsserver", "html", "prismals", "tailwindcss" }
+local servers = { "lua_ls", "tsserver", "html", "prismals", "tailwindcss", "omnisharp", "clangd", "cmake", "pyright" }
 local formatters = { "stylua", "prettier", "eslint_d" }
 
 return {
@@ -25,9 +25,29 @@ return {
             local lspconfig = require("lspconfig")
 
             for _, server in ipairs(servers) do
-                lspconfig[server].setup({
-                    capabilities = capabilities,
-                })
+                if server == "omnisharp" then
+                    lspconfig.omnisharp.setup({
+                        capabilities = capabilities,
+                        cmd = {
+                            "dotnet",
+                            os.getenv("HOME") .. "/omnisharp/OmniSharp.dll",
+                            "--languageserver",
+                            "--hostPID",
+                            tostring(vim.fn.getpid()),
+                        },
+                        root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln", ".git"),
+                    })
+                elseif server == "clangd" then
+                    lspconfig.clangd.setup({
+                        capabilities = capabilities,
+                        cmd = { "clangd", "--background-index" },
+                        root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+                    })
+                else
+                    lspconfig[server].setup({
+                        capabilities = capabilities,
+                    })
+                end
             end
 
             vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[L]sp [H]over" })
@@ -41,6 +61,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("mason-null-ls").setup({
+                auto_install = true,
                 ensure_installed = formatters,
             })
         end,
