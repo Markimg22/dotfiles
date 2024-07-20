@@ -10,9 +10,21 @@ return {
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
 
-        vim.keymap.set("n", "<leader>nt", ":Neotree toggle<CR>", { desc = "[N]eotree [t]oggle" })
-        vim.keymap.set("n", "<leader>nb", ":Neotree buffers reveal float<CR>",
-            { desc = "[N]eotree [B]uffers reveal float" })
+        local wk = require("which-key")
+
+        wk.register({
+            n = {
+                name = "Neotree",
+                t = {
+                    ":Neotree toggle<CR>",
+                    "Toggle",
+                },
+                b = {
+                    ":Neotree buffers reveal float<CR>",
+                    "Buffers reveal float",
+                },
+            },
+        }, { prefix = "<leader>" })
 
         require("neo-tree").setup({
             filesystem = {

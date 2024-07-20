@@ -15,3 +15,9 @@ vim.opt.mouse = "a"
 vim.opt.colorcolumn = "150"
 vim.opt.signcolumn = "yes"
 vim.opt.encoding = "utf-8"
+vim.opt.textwidth = 150
+vim.opt.formatoptions:append("t")
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↪ "
