@@ -12,19 +12,26 @@ return {
 
         local wk = require("which-key")
 
-        wk.register({
-            n = {
-                name = "Neotree",
-                t = {
-                    ":Neotree toggle<CR>",
-                    "Toggle",
-                },
-                b = {
-                    ":Neotree buffers reveal float<CR>",
-                    "Buffers reveal float",
-                },
-            },
-        }, { prefix = "<leader>" })
+        wk.add({
+            mode = { "n", "v" },
+            { "<leader>n", group = "Neotree" },
+            { "<leader>nt", ":Neotree toggle<CR>", desc = "Toggle" },
+            { "<leader>nb", ":Neotree buffers reveal float<CR>", desc = "Buffers reveal float" },
+        })
+
+        -- wk.register({
+        --     n = {
+        --         name = "Neotree",
+        --         t = {
+        --             ":Neotree toggle<CR>",
+        --             "Toggle",
+        --         },
+        --         b = {
+        --             ":Neotree buffers reveal float<CR>",
+        --             "Buffers reveal float",
+        --         },
+        --     },
+        -- }, { prefix = "<leader>" })
 
         require("neo-tree").setup({
             filesystem = {
