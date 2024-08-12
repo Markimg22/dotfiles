@@ -36,6 +36,9 @@ return {
                             tostring(vim.fn.getpid()),
                         },
                         root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln", ".git"),
+                        enable_roslyn_analyzers = true,
+                        enable_import_completion = true,
+                        organize_imports_on_format = true,
                     })
                 elseif server == "clangd" then
                     lspconfig.clangd.setup({
@@ -53,7 +56,7 @@ return {
             vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[L]sp [H]over" })
             vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "[L]sp [D]efinition" })
             vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "[L]sp [R]eferences" })
-            vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, { desc = "[L]sp [C]ode [A]ction" })
+            vim.keymap.set("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "[L]sp [C]ode [A]ction" })
         end,
     },
     {
