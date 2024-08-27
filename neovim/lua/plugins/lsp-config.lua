@@ -46,6 +46,17 @@ return {
                         cmd = { "clangd", "--background-index" },
                         root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
                     })
+                elseif server == "pyright" then
+                    lspconfig.pyright.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            python = {
+                                pythonPath = vim.fn.getcwd() .. "/.venv/bin/python",
+                                venvPath = vim.fn.getcwd(),
+                                venv = ".venv",
+                            },
+                        },
+                    })
                 else
                     lspconfig[server].setup({
                         capabilities = capabilities,

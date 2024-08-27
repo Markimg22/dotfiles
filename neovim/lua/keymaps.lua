@@ -15,3 +15,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 
 vim.keymap.set("n", "<leader>/", "<cmd>noh<CR>", { desc = "Clean search highlighting" })
+
+vim.keymap.set("v", "<Tab>", ">gv", { desc = "Ident >" })
+vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Ident <" })
