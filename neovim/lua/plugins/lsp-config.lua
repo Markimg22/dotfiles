@@ -1,5 +1,5 @@
 local servers = { "lua_ls", "tsserver", "html", "prismals", "tailwindcss", "omnisharp", "clangd", "cmake", "pyright" }
-local formatters = { "stylua", "prettier", "eslint_d" }
+local formatters = { "stylua", "prettier", "eslint_d", "csharpier" }
 
 return {
     {

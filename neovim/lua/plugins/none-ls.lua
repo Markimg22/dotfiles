@@ -11,6 +11,7 @@ return {
                 require("none-ls.diagnostics.eslint_d"),
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.prettier,
+                null_ls.builtins.formatting.csharpier,
                 -- adicionar aqui outros formatadores instalados com o LSP
             },
             on_attach = function(clientBf, bufnr)
